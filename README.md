@@ -1,4 +1,4 @@
-# <sashiire(kari)>
+# <sashiire(kar>
 ​
 ## サイト概要
 ### サイトテーマ
