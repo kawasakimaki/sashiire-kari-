@@ -1,0 +1,12 @@
+<!--左側にカテゴリが表示される-->
+
+<h4>商品一覧</h4>
+
+<table>
+  <% @items.each do |item| %>
+    <tr>
+      <td><%= link_to item.name, admin_items(item.id) %></td>
+      <td><%= item.price.to_s(:delimited) %></td>
+    </tr>
+  <% end %>
+</table>
