@@ -11,7 +11,13 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
   }
 
+  # 管理者用
+  namespace :admin do
+    resource :items
+  end
 
+
+  # 顧客用
   scope module: :public do
   root to: 'homes#top'
   end
