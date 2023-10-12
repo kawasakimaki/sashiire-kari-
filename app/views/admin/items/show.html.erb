@@ -1,0 +1,51 @@
+<h4>商品詳細</h4>
+
+<%= image_tag @item.get_image, size:"400x350", class: "card-img-top", style: "object-fit: cover;" %>
+<table>
+
+  <tr>
+    <td>商品名</td>
+    <td><%= @item.name %></td>
+  </tr>
+
+  <tr>
+    <td>商品説明</td>
+    <td><%= @item.description %></td>
+  </tr>
+
+  <tr>
+    <td>値段</td>
+    <td><%= @item.price.to_s(:delimited) %></td>
+  </tr>
+
+  <tr>
+    <td>エリア</td>
+    <td><%= @item.area %></td>
+  </tr>
+
+  <tr>
+    <td>店舗名</td>
+    <td><%= @item.store %></td>
+  </tr>
+
+  <tr>
+    <td>投稿ID</td>
+    <td><%= @item.id %></td>
+  </tr>
+
+  <tr>
+    <td>投稿者</td>
+    <td>※必要になったらカラム追加する</td>
+  </tr>
+
+  <tr>
+    <td>カテゴリーID</td>
+    <td><%= @item.category_id %></td>
+  </tr>
+
+  <tr>
+    <td>カテゴリー名</td>
+    <td>※必要になったらカラム追加する</td>
+  </tr>
+
+</table>

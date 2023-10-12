@@ -13,7 +13,10 @@ Rails.application.routes.draw do
 
   # 管理者用
   namespace :admin do
-    resource :items
+    resources :customers
+    resources :comment_lists
+    resources :categories
+    resources :items
   end
 
 
