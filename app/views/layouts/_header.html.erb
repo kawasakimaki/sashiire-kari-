@@ -1,0 +1,53 @@
+<!--customerログイン時-->
+<% if customer_signed_in? %>
+
+  <li>
+    <%= link_to "My page", customers_mypage_path(@customer) %>
+  </li>
+
+  <li>
+    <%= link_to "Items", items_path %>
+  </li>
+
+  <li>
+    <%= link_to "Log out", destroy_customer_session_path, method: :delete %>
+  </li>
+
+<!--adminログイン時-->
+<% elsif admin_signed_in? %>
+  <li>
+    <%= link_to "商品一覧", admin_items_path %>
+  </li>
+
+  <li>
+    <%= link_to "会員一覧", admin_customers_path %>
+  </li>
+
+  <li>
+    <%= link_to "カテゴリ一覧", admin_categories_path %>
+  </li>
+
+  <li>
+    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+  </li>
+
+<!--ゲストログイン時-->
+
+<!--未ログイン時-->
+<% else %>
+　<li>
+　  <%= link_to "Home", root_path %>
+　</li>
+
+　<li>
+　  <%= link_to "Items", items_path %>
+　</li>
+
+  <li>
+    <%= link_to "Sign up", new_customer_registration_path %>
+  </li>
+
+  <li>
+    <%= link_to "Sign in", new_customer_session_path %>
+  </li>
+<% end %>

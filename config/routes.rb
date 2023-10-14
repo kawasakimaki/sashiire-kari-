@@ -22,7 +22,17 @@ Rails.application.routes.draw do
 
   # 顧客用
   scope module: :public do
-  root to: 'homes#top'
+    root to: 'homes#top'
+    get "customers/mypage" => "customers#show"
+    get "customers/mypage/edit" => "customers#edit"
+    patch "customers/mypage" => "customers#update"
+    get "customers/confirm" => "customers#confirm"
+    patch "customers/withdrawal" => "customers#withdrawal"
+
+    resources :comment_lists
+    resources :like_lists
+    resources :categories
+    resources :items
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
