@@ -5,4 +5,5 @@ class Item < ApplicationRecord
   belongs_to :category
   has_many :like_lists, dependent: :destroy
   has_many :comment_lists, dependent: :destroy
+
 end
