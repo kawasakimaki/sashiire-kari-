@@ -1,0 +1,47 @@
+<h4>商品新規登録</h4>
+
+<%= form_with model: @item, url: items_path do |f| %>
+  <table>
+
+    <tr>
+      <td>商品画像</td>
+      <td><%= f.file_field :image, accept: "image/*" %></td>
+    </tr>
+
+    <tr>
+      <td>商品名</td>
+      <td><%= f.text_field :name, :placeholder=>"商品名" %></td>
+    </tr>
+
+    <tr>
+      <td>商品説明</td>
+      <td<%= f.text_area :description, :placeholder=>"ここに説明文を記述します" %>></td>
+    </tr>
+
+    <tr>
+      <td>カテゴリー</td>
+      <td><%= f.collection_select :category_id, Category.all, :id, :name %></td>
+    </tr>
+
+    <tr>
+      <td>価格</td>
+      <td><%= f.number_field :price, :placeholder=>"1000" %>円</td>
+    </tr>
+
+    <tr>
+      <td>エリア</td>
+      <td><%= f.text_field :area, :placeholder=>"エリア" %></td>
+    </tr>
+
+    <tr>
+      <td>店舗名</td>
+      <td><%= f.text_field :store, :placeholder=>"店舗名" %></td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td><%= f.submit '投稿' %></td>
+    </tr>
+
+  </table>
+<% end %>

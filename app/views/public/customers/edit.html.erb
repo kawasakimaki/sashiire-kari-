@@ -1,0 +1,17 @@
+<h2>my page</h2>
+
+<%= form_with model: @customer, url: customers_update_path, method: :patch do |f| %>
+  <div class="field">
+    <%= f.label :name, 'name' %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, 'email' %><br>
+    <%= f.email_field :email %>
+  </div>
+
+  <%= f.submit 'update' %>
+  退会のリンク
+
+<% end %>
