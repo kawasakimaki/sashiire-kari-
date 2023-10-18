@@ -1,0 +1,10 @@
+<table class="table table-borderless">
+  <tr class="text-center">
+    <td class="table-danger">Category</td>
+  </tr>
+  <% categories.each do |category| %>
+    <tr class="text-center">
+      <td><%= link_to category.name, category_path(category),class: "text-dark" %> </td>
+    </tr>
+  <% end %>
+</table>

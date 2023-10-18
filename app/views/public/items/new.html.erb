@@ -20,8 +20,7 @@
 
     <tr>
       <td>カテゴリー</td>
-      <td><%#= f.collection_select :category_id, Category.all, :id, :name %></td>
-      <!--<td><input type="hidden" name="category_id" value="1"></td>-->
+      <td><%= f.collection_select :category_id, Category.all, :id, :name %></td>
     </tr>
 
     <tr>

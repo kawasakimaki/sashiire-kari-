@@ -29,12 +29,11 @@ Rails.application.routes.draw do
     get "customers/confirm" => "customers#confirm"
     patch "customers/withdrawal" => "customers#withdrawal"
     get "/customers/post" => "customers#post"
-    get '/category/search' => 'searches#category_search'
 
     resources :comment_lists
     resources :like_lists
-    resources :categories
-    resources :items, only: [:new, :create, :index, :show, :edit, :update]
+    resources :categories, only: [:show]
+    resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
