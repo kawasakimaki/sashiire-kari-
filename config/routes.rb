@@ -13,10 +13,10 @@ Rails.application.routes.draw do
 
   # 管理者用
   namespace :admin do
-    resources :customers
+    resources :customers, only: [:index, :snow, :edit, :update]
     resources :comment_lists
     resources :categories
-    resources :items
+    resources :items, only: [:index, :show]
   end
 
 
@@ -29,11 +29,12 @@ Rails.application.routes.draw do
     get "customers/confirm" => "customers#confirm"
     patch "customers/withdrawal" => "customers#withdrawal"
     get "/customers/post" => "customers#post"
+    get '/category/search' => 'searches#category_search'
 
     resources :comment_lists
     resources :like_lists
     resources :categories
-    resources :items
+    resources :items, only: [:new, :create, :index, :show, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
