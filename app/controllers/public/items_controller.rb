@@ -21,6 +21,7 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @categories = Category.all
     @customer = @item.customer
+    @comment_list = CommentList.new
   end
 
   def edit

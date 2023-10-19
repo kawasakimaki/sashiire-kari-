@@ -39,17 +39,37 @@
 
 <!--いいね機能-->
 <% if @item.like_listed_by?(current_customer) %>
-    <p>
+    <tr>
+      <td>
       <%= link_to item_like_lists_path(@item), method: :delete do %>
         ♥<%= @item.like_lists.count %> いいね
       <% end %>
-    </p>
     <% else %>
-    <p>
       <%= link_to item_like_lists_path(@item), method: :post do %>
         ♡<%= @item.like_lists.count %> いいね
       <% end %>
-    </p>
+      </td>
+    </tr>
 <% end %>
 
+<!--コメント機能-->
+    <tr>
+      <td>コメント件数：<%= @item.comment_lists.count %></td>
+    </tr>
+
+    <tr>
+      <% @item.comment_lists.each do |comment_list| %>
+        <td><%= comment_list.customer.name %></td>
+        <td><%= comment_list.created_at.strftime('%Y/%m/%d') %><%= comment_list.comment %></td>
+        <td>
+          <% if comment_list.customer == current_customer %>
+            <%= link_to 'Destroy', item_comment_list_path(comment_list.item, comment_list), method: :delete %>
+          <% end %>
+        </td>
+      <% end %>
+      <%= form_with model: [@item, @comment_list] do |f| %>
+        <td><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %></td>
+        <td><%= f.submit "送信する" %></td>
+      <% end %>
+    </tr>
 </table>
