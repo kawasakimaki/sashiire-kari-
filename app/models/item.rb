@@ -16,4 +16,8 @@ class Item < ApplicationRecord
     (image.attached?) ? image : "no_image.jpg"
   end
 
+  def like_listed_by?(customer)
+    like_lists.exists?(customer_id: customer.id)
+  end
+
 end

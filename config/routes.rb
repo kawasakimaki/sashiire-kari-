@@ -30,10 +30,11 @@ Rails.application.routes.draw do
     patch "customers/withdrawal" => "customers#withdrawal"
     get "/customers/post" => "customers#post"
 
-    resources :comment_lists
-    resources :like_lists
     resources :categories, only: [:show]
-    resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+    resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+      resource :like_lists, only: [:create, :destroy]
+      resources :comment_lists
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -20,18 +20,36 @@
     <td><%= @item.price.to_s.reverse.scan(/.{1,3}/).join(',').reverse %>円</td>
   </tr>
 
-<p>投稿者：<%= @customer.name %></p>
-
+<tr>
+  <td>投稿者：<%= @customer.name %></td>
+</tr>
 
 <p><%= @item.description %></p>
 
-<% if @customer == current_customer %>
-  <td>
-    <%= link_to 'Edit',  edit_item_path, class: "btn btn-success" %>
-  </td>
-  <td>
-    <%= link_to 'Destroy',  edit_item_path, class: "btn btn-danger", method: :delete %>
-  </td>
+<% if @item.customer == current_customer %>
+  <tr>
+    <td>
+      <%= link_to 'Edit',  edit_item_path, class: "btn btn-success" %>
+    </td>
+    <td>
+      <%= link_to 'Destroy', item_path, class: "btn btn-danger", method: :delete %>
+    </td>
+  </tr>
+<% end %>
+
+<!--いいね機能-->
+<% if @item.like_listed_by?(current_customer) %>
+    <p>
+      <%= link_to item_like_lists_path(@item), method: :delete do %>
+        ♥<%= @item.like_lists.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to item_like_lists_path(@item), method: :post do %>
+        ♡<%= @item.like_lists.count %> いいね
+      <% end %>
+    </p>
 <% end %>
 
 </table>
