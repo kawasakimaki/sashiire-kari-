@@ -29,9 +29,10 @@ Rails.application.routes.draw do
     get "customers/confirm" => "customers#confirm"
     patch "customers/withdrawal" => "customers#withdrawal"
     get "/customers/post" => "customers#post"
+    get "/customers/likes" => "customers#likes"
 
     resources :categories, only: [:show]
-    resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+    resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy, ] do
       resource :like_lists, only: [:create, :destroy]
       resources :comment_lists, only: [:create, :destroy]
     end

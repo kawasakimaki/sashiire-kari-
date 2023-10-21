@@ -14,6 +14,12 @@ class Public::CustomersController < ApplicationController
     redirect_to customers_mypage_path
   end
 
+  def likes
+    @customer = current_customer
+    likes = LikeList.where(customer_id: @customer.id).pluck(:item_id)
+    @like_items = Item.find(likes)
+  end
+
 
   private
 
