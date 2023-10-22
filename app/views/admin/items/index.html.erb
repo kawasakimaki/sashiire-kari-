@@ -20,6 +20,7 @@
         <td><%= item.price.to_s(:delimited) %></td>
         <td><%= item.area %></td>
         <td><%= item.store %></td>
+        <td><%= link_to 'Destroy', admin_item_path(item.id), class: "btn btn-danger", method: :delete %></td>
       </tr>
     <% end %>
   </tbody>
