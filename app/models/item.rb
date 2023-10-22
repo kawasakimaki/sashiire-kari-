@@ -5,6 +5,8 @@ class Item < ApplicationRecord
   belongs_to :category
   has_many :like_lists, dependent: :destroy
   has_many :comment_lists, dependent: :destroy
+  has_many :item_tags, dependent: :destroy
+  has_many :tags, through: :item_tags
 
 
   def get_image
