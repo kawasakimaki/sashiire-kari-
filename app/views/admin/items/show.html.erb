@@ -29,23 +29,28 @@
   </tr>
 
   <tr>
-    <td>投稿ID</td>
-    <td><%= @item.id %></td>
-  </tr>
-
-  <tr>
     <td>投稿者</td>
-    <td>※必要になったらカラム追加する</td>
-  </tr>
-
-  <tr>
-    <td>カテゴリーID</td>
-    <td><%= @item.category_id %></td>
+    <td><%= @customer.name %></td>
   </tr>
 
   <tr>
     <td>カテゴリー名</td>
-    <td>※必要になったらカラム追加する</td>
+    <td><%= @item.category.name %></td>
   </tr>
+
+  <!--コメント機能-->
+    <tr>
+      <td>コメント件数：<%= @item.comment_lists.count %></td>
+    </tr>
+
+    <tr>
+      <% @item.comment_lists.each do |comment_list| %>
+        <td><%= comment_list.customer.name %></td>
+        <td><%= comment_list.created_at.strftime('%Y/%m/%d') %><%= comment_list.comment %></td>
+        <td>
+          <%= link_to 'Destroy', admin_item_comment_list_path(comment_list.item, comment_list), method: :delete %>
+        </td>
+      <% end %>
+    </tr>
 
 </table>

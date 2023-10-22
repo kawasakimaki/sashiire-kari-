@@ -14,15 +14,18 @@ Rails.application.routes.draw do
   # 管理者用
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :comment_lists
     resources :categories
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show, :destroy] do
+      resources :comment_lists, only: [:destroy]
+    end
+
   end
 
 
   # 顧客用
   scope module: :public do
     root to: 'homes#top'
+    post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
     get "customers/mypage" => "customers#show"
     get "customers/mypage/edit" => "customers#edit"
     patch "customers/update" => "customers#update"
