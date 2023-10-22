@@ -6,7 +6,7 @@
    <th>会員ID</th>
    <th>名前</th>
    <th>メールアドレス</th>
-   <th>ステータス（余裕あれば）</th>
+   <th>ステータス</th>
   </tr>
 
   <% @customers.each do |customer| %>
@@ -14,7 +14,13 @@
       <th><%= customer.id %></th>
       <th><%= link_to customer.name, admin_customer_path(customer) %></th>
       <th><%= customer.email %></th>
-      <th></th>
+      <th>
+         <% if customer.is_active %>
+           <span class="text-success">有効</span>
+         <% else %>
+           <span class="text-secondary">退会</span>
+         <% end %>
+      </th>
     </tr>
   <% end %>
 

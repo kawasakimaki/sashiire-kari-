@@ -11,4 +11,9 @@ class Customer < ApplicationRecord
   has_many :comment_lists, dependent: :destroy
   has_many :items, dependent: :destroy
   has_many :like_items, through: :like_lists, source: :item
+
+  def active_for_authentication?
+    super && (is_active == true)
+  end
+
 end

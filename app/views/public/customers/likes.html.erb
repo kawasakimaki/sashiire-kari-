@@ -5,7 +5,6 @@
 <%= image_tag like_item.get_image, size:"200x150" %>
 <%= like_item.customer.name %>
 <i class="fa fa-heart unlike-btn"></i>
-<%#= item.likes.length %>
 <%= link_to like_item.name, item_path(like_item.id) %>
 
 <% end %>

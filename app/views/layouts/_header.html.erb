@@ -19,6 +19,7 @@
 
 <!--adminログイン時-->
 <% elsif admin_signed_in? %>
+<br>
   <li>
     <%= link_to "商品一覧", admin_items_path %>
   </li>
@@ -39,13 +40,13 @@
 
 <!--未ログイン時-->
 <% else %>
-　<li>
-　  <%= link_to "Home", root_path %>
-　</li>
+  <li>
+     <%= link_to "Home", root_path %>
+  </li>
 
-　<li>
-　  <%= link_to "Items", items_path %>
-　</li>
+  <li>
+    <%= link_to "Items", items_path %>
+  </li>
 
   <li>
     <%= link_to "Sign up", new_customer_registration_path %>

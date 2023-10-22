@@ -19,7 +19,13 @@
 
   <tr>
     <td>会員ステータス</td>
-    <td>※必要になったらカラム追加する</td>
+    <td>
+      <% if @customer.is_active %>
+        <span class="text-success">有効</span>
+      <% else %>
+        <span class="text-secondary">退会</span>
+      <% end %>
+    </td>
   </tr>
 
   <tr>

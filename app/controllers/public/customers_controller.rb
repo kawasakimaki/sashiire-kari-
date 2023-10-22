@@ -16,9 +16,19 @@ class Public::CustomersController < ApplicationController
 
   def likes
     @customer = current_customer
-    # likes = LikeList.where(customer_id: @customer.id).pluck(:item_id)
-    # @like_items = Item.find(likes)
     @like_items = @customer.like_items
+  end
+
+  def unsubscribe
+    @customer = current_customer
+  end
+
+  def withdrawal
+    @customer = current_customer
+    @customer.update(is_active: false)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
   end
 
 
@@ -27,7 +37,4 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:id, :name, :email, :image)
   end
-
-
-
 end
