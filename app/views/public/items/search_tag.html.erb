@@ -1,0 +1,19 @@
+<h2>タグが<%=@tag.name%>の投稿一覧</h2>
+
+  <!--タグリスト-->
+  <% @tag_list.each do |list|%>
+    <i class="fa-sharp fa-solid fa-tag"></i>
+    <%=link_to list.name,search_tag_path(tag_id: list.id) %>
+    <%="(#{list.items.count})" %>
+  <% end %>
+
+  <!--タグに紐づいた投稿一覧-->
+  <table>
+  <% @items.each do |item| %>
+    <tr>
+      <td><%= image_tag item.get_image, size:"200x150", class: "card-img-top", style: "object-fit: cover;" %></td>
+      <td><%= link_to item.goods_name, item_path(item.id), class: "text-dark" %></td>
+      <td><%= item.price.to_s(:delimited) %>円</td>
+    </tr>
+  <% end %>
+</table>

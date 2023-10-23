@@ -6,7 +6,7 @@
   <%= image_tag @item.get_image, size:"250x250", class: "card-img-top", style: "object-fit: cover;" %>
 </div>
 
-<h4><%= @item.name %></h4>
+<h4><%= @item.goods_name %></h4>
 
 <table>
   <tr>
@@ -73,3 +73,9 @@
       <% end %>
     </tr>
 </table>
+
+<!-- タグリスト -->
+      <% @item_tags.each do |tag| %>
+      <i class="fa-sharp fa-solid fa-tag"></i>
+        <%= link_to tag.name,search_tag_path(tag_id: tag.id) %>
+      <% end %>
