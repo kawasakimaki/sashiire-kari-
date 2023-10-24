@@ -37,4 +37,13 @@ class Item < ApplicationRecord
     end
   end
 
+  # キーワード検索機能
+  def self.looks(goods_name)
+      if goods_name != ""
+      @items = Item.where(goods_name: goods_name)
+      else
+      @items = Item.all
+      end
+  end
+
 end

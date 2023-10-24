@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe' # 退会画面を表示
     patch '/customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal' # 退会処理(customerカラムのbooleanを更新)
     get "search_tag" => "items#search_tag" # タグの検索で使用する
+    get 'searche' => 'items#search' #キーワード検索を表示
 
     resources :categories, only: [:show]
     resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy, ] do
