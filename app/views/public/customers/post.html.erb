@@ -1,2 +1,11 @@
 <h4>投稿履歴一覧</h4>
 
+<table>
+  <% @items.each do |item| %>
+    <tr>
+      <td><%= image_tag item.get_image, size:"200x150", class: "card-img-top", style: "object-fit: cover;" %></td>
+      <td><%= link_to item.goods_name, item_path(item.id), class: "text-dark" %></td>
+      <td><%= item.price.to_s(:delimited) %>円</td>
+    </tr>
+  <% end %>
+</table>

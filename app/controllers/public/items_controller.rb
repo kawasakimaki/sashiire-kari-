@@ -64,7 +64,7 @@ class Public::ItemsController < ApplicationController
     #検索されたタグに紐づく投稿を表示
     @items = @tag.items
   end
-  
+
   # キーワード検索
   def search
     @items = Item.looks(params[:goods_name])

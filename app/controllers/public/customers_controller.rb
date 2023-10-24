@@ -31,6 +31,10 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
+  def post
+    @items = Item.where(customer_id: current_customer.id).page(params[:page]).per(12)
+  end
+
 
   private
 
