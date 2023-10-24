@@ -1,60 +1,98 @@
-<!--customerログイン時-->
-<% if customer_signed_in? %>
+<header class="border border-dark">
+  <div class="container-fould">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <%= link_to root_path do %>
+          <%= image_tag('img115.png', :size =>'70x70') %>
+        <% end %>
+      </div>
 
-  <li>
-    <%= link_to "My page", customers_mypage_path(@customer) %>
-  </li>
+      <!--customerログイン時-->
+      <% if customer_signed_in? %>
+        <!--メニュー-->
+        <ul class="mr-auto d-flex">
+          <li class="nav-link">
+            <%= link_to "My page", customers_mypage_path(@customer), class: "btn btn-outline-success" %>
+          </li>
 
-  <li>
-    <%= link_to "Items", items_path %>
-  </li>
+          <li class="nav-link">
+            <%= link_to "Items", items_path,  class: "btn btn-outline-success" %>
+          </li>
 
-  <li>
-    <%= link_to "New Post", new_item_path %>
-  </li>
+          <li class="nav-link">
+            <%= link_to "New Post", new_item_path,  class: "btn btn-outline-success" %>
+          </li>
 
-  <li>
-    <%= link_to "Log out", destroy_customer_session_path, method: :delete %>
-  </li>
+          <li class="nav-link">
+            <%= link_to "Log out", destroy_customer_session_path,  class: "btn btn-outline-success", method: :delete %>
+          </li>
+        </ul>
 
-<!--adminログイン時-->
-<% elsif admin_signed_in? %>
-<br>
-  <li>
-    <%= link_to "商品一覧", admin_items_path %>
-  </li>
+        <!--キーワード検索-->
+        <ul class="ml-auto d-flex">
+          <li class="nav-link">
+            <%= render 'public/items/search' %>
+          </li>
+        </ul>
 
-  <li>
-    <%= link_to "会員一覧", admin_customers_path %>
-  </li>
+      <!--adminログイン時-->
+      <% elsif admin_signed_in? %>
+        <!--メニュー-->
+        <ul class="mr-auto d-flex">
 
-  <li>
-    <%= link_to "カテゴリ一覧", admin_categories_path %>
-  </li>
+          <li class="nav-link">
+            <%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-success" %>
+          </li>
 
-  <li>
-    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-  </li>
+          <li class="nav-link">
+            <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-success" %>
+          </li>
 
-<!--未ログイン時-->
-<% else %>
-  <li>
-     <%= link_to "Home", root_path %>
-  </li>
+          <li class="nav-link">
+            <%= link_to "カテゴリ一覧", admin_categories_path, class: "btn btn-outline-success" %>
+          </li>
 
-  <li>
-    <%= link_to "Items", items_path %>
-  </li>
+          <li class="nav-link">
+            <%= link_to "ログアウト", destroy_admin_session_path, class: "btn btn-outline-success", method: :delete %>
+          </li>
+        </ul>
 
-  <li>
-    <%= link_to "Sign up", new_customer_registration_path %>
-  </li>
+        <!--キーワード検索-->
+        <ul class="ml-auto d-flex">
+          <li class="nav-link">
+            <%= render 'public/items/search' %>
+          </li>
+        </ul>
 
-  <li>
-    <%= link_to "Sign in", new_customer_session_path %>
-  </li>
+      <!--未ログイン時-->
+      <% else %>
+        <!--メニュー-->
+        <ul class="mr-auto d-flex">
 
-  <li>
-    <%= link_to 'Gest sign in', homes_guest_sign_in_path, method: :post %>
-  </li>
-<% end %>
+          <li class="nav-link">
+            <%= link_to "Items", items_path, class: "btn btn-outline-success" %>
+          </li>
+
+          <li class="nav-link">
+            <%= link_to "Sign up", new_customer_registration_path, class: "btn btn-outline-success" %>
+          </li>
+
+          <li class="nav-link">
+            <%= link_to "Sign in", new_customer_session_path, class: "btn btn-outline-success" %>
+          </li>
+
+          <li class="nav-link">
+            <%= link_to 'Gest sign in', homes_guest_sign_in_path,  class: "btn btn-outline-success", method: :post %>
+          </li>
+        </ul>
+
+        <!--キーワード検索-->
+        <ul class="ml-auto d-flex">
+          <li class="nav-link">
+            <%= render 'public/items/search' %>
+          </li>
+        </ul>
+      <% end %>
+    </nav>
+  </div>
+</header>
