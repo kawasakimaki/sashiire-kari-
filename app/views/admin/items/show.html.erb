@@ -9,65 +9,69 @@
   <div class="row my-3">
     <div class="col-lg-4">
       <div class="card-img-top m-1">
-        <%= image_tag @item.get_image, size:"400x350", class: "card-img-top", style: "object-fit: cover;" %>
+        <%= image_tag @item.get_image, size:"300x200", class: "card-img-top", style: "object-fit: cover;" %>
       </div>
     </div>
 
+    <div class="col-lg-5">
+      <table class="table table-borderless">
 
-  <tr>
-    <td>商品名</td>
-    <td><%= @item.goods_name %></td>
-  </tr>
+        <tr>
+          <td>商品名</td>
+          <td><%= @item.goods_name %></td>
+        </tr>
 
-  <tr>
-    <td>商品説明</td>
-    <td><%= @item.description %></td>
-  </tr>
+        <tr>
+          <td>商品説明</td>
+          <td><%= @item.description %></td>
+        </tr>
 
-  <tr>
-    <td>値段</td>
-    <td><%= @item.price.to_s(:delimited) %></td>
-  </tr>
+        <tr>
+          <td>カテゴリー</td>
+          <td><%= @item.category.name %></td>
+        </tr>
 
-  <tr>
-    <td>エリア</td>
-    <td><%= @item.area %></td>
-  </tr>
+        <tr>
+          <td>値段</td>
+          <td><%= @item.price.to_s(:delimited) %>円</td>
+        </tr>
 
-  <tr>
-    <td>店舗名</td>
-    <td><%= @item.store %></td>
-  </tr>
+        <tr>
+          <td>エリア</td>
+          <td><%= @item.area %></td>
+        </tr>
 
-  <tr>
-    <td>投稿者</td>
-    <td><%= @customer.name %></td>
-  </tr>
+        <tr>
+          <td>店舗名</td>
+          <td><%= @item.store %></td>
+        </tr>
 
-  <tr>
-    <td>カテゴリー名</td>
-    <td><%= @item.category.name %></td>
-  </tr>
+        <tr>
+          <td>投稿者</td>
+          <td><%= @customer.name %></td>
+        </tr>
 
-  <!--コメント機能-->
-    <tr>
-      <td>コメント件数：<%= @item.comment_lists.count %></td>
-    </tr>
+        <!--コメント機能-->
+        <tr>
+          <td>コメント件数：<%= @item.comment_lists.count %></td>
+        </tr>
 
-    <tr>
-      <% @item.comment_lists.each do |comment_list| %>
-        <td><%= comment_list.customer.name %></td>
-        <td><%= comment_list.created_at.strftime('%Y/%m/%d') %><%= comment_list.comment %></td>
-        <td>
-          <%= link_to 'Destroy', admin_item_comment_list_path(comment_list.item, comment_list), method: :delete %>
-        </td>
-      <% end %>
-    </tr>
+        <% @item.comment_lists.each do |comment_list| %>
+          <tr>
+            <td><%= comment_list.customer.name %></td>
+            <td><%= comment_list.created_at.strftime('%Y/%m/%d') %><%= comment_list.comment %></td>
+            <td>
+              <%= link_to 'Destroy', admin_item_comment_list_path(comment_list.item, comment_list), method: :delete %>
+            </td>
+          </tr>
+        <% end %>
 
-    <tr>
-    <td>
-      <%= link_to 'Destroy', admin_item_path, class: "btn btn-outline-success", method: :delete %>
-    </td>
-    </tr>
-
-</table>
+        <tr>
+          <td>
+            <%= link_to 'Destroy', admin_item_path, class: "btn btn-outline-success", method: :delete %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
