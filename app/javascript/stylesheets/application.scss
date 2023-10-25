@@ -5,3 +5,26 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+main {
+  padding-bottom: 56px;
+}
+
+.item_post {
+  width          : 100%;             // 100%幅
+  border-collapse: collapse;         // 境界線結合
+  border-spacing : 50;                // 罫線間余白
+  font-size      : 9pt;              // 文字サイズ
+}
+// ヘッダーのスタイル指定
+.item_post th {
+  text-align    : left;              // 文字位置
+  padding       : 16px 0 16px 16px;  // 余白
+  font-size     : 16px;
+}
+// 明細のスタイル指定
+.item_post td {
+  text-align    : left;              // 文字位置
+  padding       : 10px 16px;        // 余白
+  font-size     : 15px     ;
+}

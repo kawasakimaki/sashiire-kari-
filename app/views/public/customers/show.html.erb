@@ -1,7 +1,14 @@
-<h2>my page</h2>
+<div class="container">
 
-<table>
+  <div class="row">
+    <div class="m-4">
+      <h3>my page</h3>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-lg-10 mt-3">
+      <table class="table table-hover table-inverse">
   <tr>
     <td>name</td>
     <td><%= @customer.name %></td>
@@ -16,6 +23,11 @@
 
 
 
-  <%= link_to "編集する", customers_mypage_edit_path %>
-  <%= link_to "いいね一覧", customers_likes_path %>
-  <%= link_to "投稿履歴一覧", customers_post_path %>
+  <%= link_to "編集する", customers_mypage_edit_path, class: "btn btn-outline-success" %>
+  <%= link_to "いいね一覧", customers_likes_path, class: "btn btn-outline-success" %>
+  <%= link_to "投稿履歴一覧", customers_post_path, class: "btn btn-outline-success" %>
+
+
+    </div>
+  </div>
+</div>
