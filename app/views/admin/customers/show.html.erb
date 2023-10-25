@@ -1,36 +1,46 @@
-<h4><%= @customer.name %>さんの会員詳細</h4>
+<div class="container">
 
-<table>
+  <div class="row">
+    <div class="m-4">
+      <h4><%= @customer.name %>さんの会員詳細</h4>
+    </div>
+  </div>
 
-  <tr>
-    <td>会員ID</td>
-    <td><%= @customer.id %></td>
-  </tr>
+  <div class="row">
+    <div class="col-lg-10 mt-3">
+      <table class="table table-hover table-inverse">
 
-  <tr>
-    <td>名前</td>
-    <td><%= @customer.name %></td>
-  </tr>
+        <tr>
+          <td class="table-success">会員ID</td>
+          <td><%= @customer.id %></td>
+        </tr>
 
-  <tr>
-    <td>メールアドレス</td>
-    <td><%= @customer.email %></td>
-  </tr>
+        <tr>
+          <td class="table-success">名前</td>
+          <td><%= @customer.name %></td>
+        </tr>
 
-  <tr>
-    <td>会員ステータス</td>
-    <td>
-      <% if @customer.is_active %>
-        <span class="text-success">有効</span>
-      <% else %>
-        <span class="text-secondary">退会</span>
-      <% end %>
-    </td>
-  </tr>
+        <tr>
+          <td class="table-success">メールアドレス</td>
+          <td><%= @customer.email %></td>
+        </tr>
 
-  <tr>
-    <td></td>
-    <td><%= link_to '編集', edit_admin_customer_path(@customer) %></td>
-  </tr>
+        <tr>
+          <td class="table-success">会員ステータス</td>
+          <td>
+            <% if @customer.is_active %>
+              <span class="text-success">有効</span>
+            <% else %>
+              <span class="text-secondary">退会</span>
+            <% end %>
+          </td>
+        </tr>
 
-</table>
+        <tr>
+          <td></td>
+          <td><%= link_to '編集', edit_admin_customer_path(@customer), class: "btn btn-outline-success" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

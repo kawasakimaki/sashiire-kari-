@@ -1,29 +1,38 @@
-<h4>会員一覧</h4>
+<div class="container">
 
-<table>
+  <div class="row">
+    <div class="m-4">
+      <h4>会員一覧</h4>
+    </div>
+  </div>
 
-  <tr>
-   <th>会員ID</th>
-   <th>名前</th>
-   <th>メールアドレス</th>
-   <th>ステータス</th>
-  </tr>
+  <div class="row">
+    <div class="col-lg-10 mt-3">
+      <table class="table table-hover table-inverse">
 
-  <% @customers.each do |customer| %>
-    <tr>
-      <th><%= customer.id %></th>
-      <th><%= link_to customer.name, admin_customer_path(customer) %></th>
-      <th><%= customer.email %></th>
-      <th>
-         <% if customer.is_active %>
-           <span class="text-success">有効</span>
-         <% else %>
-           <span class="text-secondary">退会</span>
-         <% end %>
-      </th>
-    </tr>
-  <% end %>
+        <tr class="table-success">
+          <th>会員ID</th>
+          <th>名前</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
 
-</table>
-
-<%= paginate @customers %>
+        <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.id %></td>
+            <td><%= link_to customer.name, admin_customer_path(customer) %></td>
+            <td><%= customer.email %></td>
+            <td>
+              <% if customer.is_active %>
+                <span class="text-success">有効</span>
+              <% else %>
+                <span class="text-secondary">退会</span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <%= paginate @customers %>
+    </div>
+  </div>
+</div>

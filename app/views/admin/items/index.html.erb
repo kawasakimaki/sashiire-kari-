@@ -1,30 +1,36 @@
-<h4>投稿一覧</h4>
+<div class="container">
 
-<table>
+  <div class="row">
+    <div class="m-4">
+      <h4>投稿一覧</h4>
+    </div>
+  </div>
 
-  <thead>
-    <tr>
-      <th>投稿ID</th>
-      <th>商品名</th>
-      <th>値段</th>
-      <th>エリア</th>
-      <th>店舗名</th>
-    </tr>
-  </thead>
+  <div class="row">
+    <div class="col-lg-10 mt-3">
+      <table class="table table-hover table-inverse">
 
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.id %>></td>
-        <td><%= link_to item.goods_name, admin_item_path(item.id) %></td>
-        <td><%= item.price.to_s(:delimited) %></td>
-        <td><%= item.area %></td>
-        <td><%= item.store %></td>
-        <td><%= link_to 'Destroy', admin_item_path(item.id), class: "btn btn-danger", method: :delete %></td>
-      </tr>
-    <% end %>
-  </tbody>
+        <tr class="table-success">
+          <th>投稿ID</th>
+          <th>商品名</th>
+          <th>値段</th>
+          <th>エリア</th>
+          <th>店舗名</th>
+          <th></th>
+        </tr>
 
-</table>
-
-<%= paginate @items %>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= link_to item.goods_name, admin_item_path(item.id) %></td>
+            <td><%= item.price.to_s(:delimited) %></td>
+            <td><%= item.area %></td>
+            <td><%= item.store %></td>
+            <td><%= link_to 'Destroy', admin_item_path(item.id), class: "btn btn-outline-success", method: :delete %></td>
+          </tr>
+        <% end %>
+        <%= paginate @items %>
+      </table>
+    </div>
+  </div>
+</div>
