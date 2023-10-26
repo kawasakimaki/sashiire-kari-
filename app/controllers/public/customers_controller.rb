@@ -17,6 +17,8 @@ class Public::CustomersController < ApplicationController
   def likes
     @customer = current_customer
     @like_items = @customer.like_items
+    @tag_lists = Tag.all
+    @categories = Category.all
   end
 
   def unsubscribe

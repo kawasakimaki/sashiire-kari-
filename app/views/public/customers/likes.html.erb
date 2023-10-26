@@ -1,10 +1,29 @@
-<h4>いいね一覧</h4>
+<div class="container">
 
-<% @like_items.each do |like_item| %>
+  <div class="row col-12 mx-auto py-5">
+    <div class="sidebar col-3">
+      <!--カテゴリ-->
+      <%= render 'public/categories/category', categories: @categories %>
+    </div>
 
-<%= image_tag like_item.get_image, size:"200x150" %>
-<%= like_item.customer.name %>
-<i class="fa fa-heart unlike-btn"></i>
-<%= link_to like_item.goods_name, item_path(like_item.id) %>
+    <!--お気に入り一覧-->
+     <div class="col-8 justify-content-center ml-5">
+       <h4>お気に入り一覧</h4>
+       <div class="row row-cols-1 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 mx-auto p-2">
 
-<% end %>
+         <% @like_items.each do |like_item| %>
+           <div class="item card-list-container col m-0.5 pb-5 text-center" >
+             <%= link_to item_path(like_item.id) do %>
+               <%= image_tag like_item.get_image, size:"150x100", class: "card-img-top", style: "object-fit: cover;" %>
+               <br><br><h6 class="card-title text-dark"><%= like_item.goods_name %></h6>
+             <% end %>
+              <div class="item-label">
+                <%= like_item.customer.name %>
+              </div>
+              <i class="fa-solid fa-comment" style="color: #b8f0ad;"></i><%= like_item.comment_lists.count %>
+              <i class="fa-solid fa-heart" style="color: #b8f0ad;"></i><%= like_item.like_lists.count %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
