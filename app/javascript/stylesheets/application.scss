@@ -28,3 +28,26 @@ main {
   padding       : 10px 16px;        // 余白
   font-size     : 15px     ;
 }
+
+// カテゴリーロゴのスタイル指定
+.category_logo {
+  position: relative;
+  padding: 0.5em;
+  background: #89c997;
+  color: white;
+}
+
+.category_logo::before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px rgb(149, 158, 155);
+}
+
+// タグリストのスタイル指定
+.tag_list {
+  font-size : 12px;
+}

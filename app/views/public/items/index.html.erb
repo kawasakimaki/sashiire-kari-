@@ -1,25 +1,28 @@
-<!--カテゴリ-->
-<%= render 'public/categories/category', categories: @categories %>
+<div class="container">
 
-<!--商品一覧-->
-<h4>商品一覧（全<%= @item_amount.all.count %>件）</h4>
+  <div class="row col-12 mx-auto py-5">
+    <div class="sidebar col-3">
+      <!--カテゴリ-->
+      <%= render 'public/categories/category', categories: @categories %>
+    </div>
 
-<table>
-  <% @items.each do |item| %>
-    <tr>
-      <td><%= image_tag item.get_image, size:"200x150", class: "card-img-top", style: "object-fit: cover;" %></td>
-      <td><%= link_to item.goods_name, item_path(item.id), class: "text-dark" %></td>
-      <td><%= item.price.to_s(:delimited) %>円</td>
-    </tr>
-  <% end %>
-</table>
+    <!--商品一覧-->
+    <div class="col-8 justify-content-center ml-5">
+      <h4>商品一覧（全<%= @item_amount.all.count %>件）</h4>
+      <div class="row row-cols-1 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 mx-auto p-2">
 
-<!--タグリスト-->
-  <% @tag_list.each do |list|%>
-    <i class="fa-sharp fa-solid fa-tag"></i>
-    <%=link_to list.name,search_tag_path(tag_id: list.id) %>
-    <%="(#{list.items.count})" %>
-  <% end %>
-
-
-<%= paginate @items %>
+        <% @items.each do |item| %>
+          <div class="item card-list-container col m-0.5 pb-5 text-center" >
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_image, size:"150x100", class: "card-img-top", style: "object-fit: cover;" %>
+              <br><br><h6 class="card-title text-dark"><%= item.goods_name %></h6>
+            <% end %>
+            <i class="fa-solid fa-comment" style="color: #b8f0ad;"></i><%= item.comment_lists.count %>
+            <i class="fa-solid fa-heart" style="color: #b8f0ad;"></i><%= item.like_lists.count %>
+          </div>
+        <% end %>
+      </div>
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>

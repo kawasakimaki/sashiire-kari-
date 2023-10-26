@@ -32,7 +32,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def post
-    @items = Item.where(customer_id: current_customer.id).page(params[:page]).per(12)
+    @items = Item.where(customer_id: current_customer.id).page(params[:page]).per(9)
+    @tag_lists = Tag.all
+    @categories = Category.all
   end
 
 

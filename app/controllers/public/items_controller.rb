@@ -19,10 +19,10 @@ class Public::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.page(params[:page]).per(12)
+    @items = Item.page(params[:page]).per(9)
     @item_amount = Item.all
     @categories = Category.all
-    @tag_list = Tag.all
+    @tag_lists = Tag.all
   end
 
   def show
@@ -32,6 +32,7 @@ class Public::ItemsController < ApplicationController
     @comment_list = CommentList.new
     @tag_list = @item.tags.pluck(:name).join(',')
     @item_tags = @item.tags
+    @tag_lists = Tag.all
   end
 
   def edit
@@ -63,11 +64,15 @@ class Public::ItemsController < ApplicationController
     @tag = Tag.find(params[:tag_id])
     #検索されたタグに紐づく投稿を表示
     @items = @tag.items
+    @categories = Category.all
+    @tag_lists = Tag.all
   end
 
   # キーワード検索
   def search
     @items = Item.looks(params[:goods_name])
+    @categories = Category.all
+    @tag_lists = Tag.all
   end
 
 

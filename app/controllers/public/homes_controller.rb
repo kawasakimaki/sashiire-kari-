@@ -1,6 +1,7 @@
 class Public::HomesController < ApplicationController
   def top
     @categories = Category.all
+    @tag_lists = Tag.all
   end
 
   def guest_sign_in

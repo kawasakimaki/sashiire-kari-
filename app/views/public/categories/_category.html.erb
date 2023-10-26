@@ -1,10 +1,20 @@
 <table class="table table-borderless">
+  <!--カテゴリ-->
   <tr class="text-center">
-    <td class="table-danger">Category</td>
+    <td class="category_logo">Category</td>
   </tr>
   <% categories.each do |category| %>
     <tr class="text-center">
-      <td><%= link_to category.name, category_path(category),class: "text-dark" %> </td>
+      <td><%= link_to category.name, category_path(category),class: "text-dark" %></td>
     </tr>
   <% end %>
-</table>
+  </table>
+
+  <!--タグリスト-->
+  <div class="tag_list">
+    <% @tag_lists.each do |list|%>
+      <i class="fa-solid fa-tag" style="color: #b8f0ad;"></i>
+      <%=link_to list.name,search_tag_path(tag_id: list.id) , class: "text-dark" %>
+      <%="(#{list.items.count})" %>
+    <% end %>
+  </div>
