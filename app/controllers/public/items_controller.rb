@@ -1,4 +1,6 @@
 class Public::ItemsController < ApplicationController
+  before_action :authenticate_customer!, except: [:top, :guest_sign_in]
+  before_action :is_matching_login_customer, only: [:edit, :update]
 
   def new
     @item = Item.new
@@ -14,6 +16,7 @@ class Public::ItemsController < ApplicationController
       @item.save_tags(tag_list)
       redirect_to item_path(@item), notice:'投稿が完了しました'
     else
+      flash[:notice] = "投稿に失敗しました。"
       render :new
     end
   end
@@ -45,8 +48,9 @@ class Public::ItemsController < ApplicationController
     tag_list=params[:item][:name].split(',')
     if @item.update(item_params)
       @item.save_tags(tag_list)
-      redirect_to item_path(@item.id)
+      redirect_to item_path(@item.id), notice:'投稿の編集が完了しました'
     else
+      flash[:notice] = "投稿の編集に失敗しました。"
       render :edit
     end
   end
@@ -54,7 +58,7 @@ class Public::ItemsController < ApplicationController
   def destroy
     item = Item.find(params[:id])
     item.destroy
-    redirect_to  items_path
+    redirect_to  items_path, notice:'削除が完了しました'
   end
 
   def search_tag
@@ -80,6 +84,13 @@ class Public::ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:goods_name, :description, :price, :area, :store, :image, :category_id).merge(customer_id: current_customer.id)
+  end
+
+  def is_matching_login_customer
+    @item = Item.find(params[:id])
+    unless current_customer.id == @item.customer_id
+      redirect_to items_path
+    end
   end
 
 end

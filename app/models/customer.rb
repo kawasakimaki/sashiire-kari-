@@ -12,6 +12,8 @@ class Customer < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :like_items, through: :like_lists, source: :item
 
+  validates :name, presence: true, length: { maximum: 20 }
+
   def active_for_authentication?
     super && (is_active == true)
   end

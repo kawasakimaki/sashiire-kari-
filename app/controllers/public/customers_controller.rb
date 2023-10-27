@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!, except: [:top, :guest_sign_in]
 
   def show
     @customer = current_customer
@@ -11,7 +12,7 @@ class Public::CustomersController < ApplicationController
   def update
     customer = current_customer
     customer.update(customer_params)
-    redirect_to customers_mypage_path
+    redirect_to customers_mypage_path, notice:'編集が完了しました'
   end
 
   def likes
@@ -34,6 +35,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def post
+    @customer = current_customer
     @items = Item.where(customer_id: current_customer.id).page(params[:page]).per(9)
     @tag_lists = Tag.all
     @categories = Category.all
@@ -45,4 +47,5 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:id, :name, :email, :image)
   end
+
 end

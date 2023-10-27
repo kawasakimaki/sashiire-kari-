@@ -12,7 +12,7 @@ class Admin::ItemsController < ApplicationController
   def destroy
     item = Item.find(params[:id])
     item.destroy
-    redirect_to  admin_items_path
+    redirect_to  admin_items_path, notice:'投稿の削除が完了しました'
   end
 
   private

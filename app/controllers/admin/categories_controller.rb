@@ -7,8 +7,13 @@ class Admin::CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    @category.save
-    redirect_to admin_categories_path
+    if @category.save
+      redirect_to admin_categories_path, notice:'カテゴリの登録が完了しました'
+    else
+      @categories = Category.all
+      flash[:notice] = "カテゴリの登録に失敗しました。"
+      render :index
+    end
   end
 
   def edit
@@ -18,9 +23,10 @@ class Admin::CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
-       redirect_to admin_categories_path
+       redirect_to admin_categories_path, notice:'カテゴリの編集が完了しました'
     else
-       render :edit
+      flash[:notice] = "カテゴリの編集に失敗しました。"
+      render :edit
     end
   end
 

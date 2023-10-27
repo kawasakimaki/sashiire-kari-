@@ -8,6 +8,9 @@
 
     <!--商品詳細-->
     <div class="col-8 justify-content-center ml-5">
+      <div>
+        <%= flash[:notice] %>
+      </div><br>
       <h4><%= @item.goods_name %></h4>
       <div class>
         <%= image_tag @item.get_image, size:"200x200", class: "card-img-top", style: "object-fit: cover;" %>
@@ -32,7 +35,7 @@
         <tr>
           <td><%= @item.description %></td>
         </tr>
-        
+
         <% if @item.customer == current_customer %>
   <tr>
     <td>

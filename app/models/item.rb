@@ -8,6 +8,12 @@ class Item < ApplicationRecord
   has_many :item_tags, dependent: :destroy
   has_many :tags, through: :item_tags
 
+  validates :goods_name, presence: true
+  validates :description, presence: true
+  validates :price, presence: true
+  validates :area, presence: true
+  validates :store, presence: true
+
 
   def get_image
     (image.attached?) ? image : "no_image.jpg"

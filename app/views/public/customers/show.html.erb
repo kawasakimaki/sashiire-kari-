@@ -22,8 +22,9 @@
 </table>
 
 
-
-  <%= link_to "編集する", customers_mypage_edit_path, class: "btn btn-outline-success" %>
+  <% unless @customer.email == "guest@example.com" then %>
+    <%= link_to "編集する", customers_mypage_edit_path, class: "btn btn-outline-success" %>
+  <% end %>
   <%= link_to "いいね一覧", customers_likes_path, class: "btn btn-outline-success" %>
   <%= link_to "投稿履歴一覧", customers_post_path, class: "btn btn-outline-success" %>
 
