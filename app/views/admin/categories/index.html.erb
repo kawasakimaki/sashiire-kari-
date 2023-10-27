@@ -6,19 +6,19 @@
   </div>
 
   <!--新規登録-->
-  <div class="row">
-    <div class="col-lg-12 mt-3">
-      <table>
-        <%=form_with model: @category,url:  admin_categories_path, method: :post do |f| %>
+  <%=form_with model: @category,url:  admin_categories_path, method: :post do |f| %>
+    <div class="row">
+      <div class="col-lg-12 mt-3">
+        <table>
           <tr>
             <td><%= f.label :"カテゴリー名", class: "mr-3" %></td>
             <td><%= f.text_field :name, class: "mr-5" %></td>
             <td><%= f.submit'新規登録',class: "btn btn-outline-success" %></td>
           </tr>
-        <% end %>
-      </table>
+        </table>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <!--カテゴリ一覧-->
   <div class="row">
