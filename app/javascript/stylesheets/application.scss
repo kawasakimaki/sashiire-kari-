@@ -51,9 +51,27 @@ h1 {
 }
 
 // アバウトページのスタイル指定
+.over-about {
+  position   : absolute;                   /* 親要素からの絶対位置 */
+  box-sizing : border-box;
+  white-space: nowrap;                     /* 折返しなし */
+  display    : inline-block;               /* 文字囲みのBOXにする */
+  color      : rgba(0, 0, 0, 0.80);    /* 文字色（透明度） */
+  top        : 30%;                        /* 親要素からの上位置 */
+  left       : 55%;                        /* 親要素からの左位置 */
+  transform  : translate(-65%, -24%);      /* 文字BOXの位置ずらし */
+  font-size  : 15pt;                       /* 文字サイズ */
+  font-weight: bold;                       /* 太字 */
+  line-height: 1em;                        /* 1行の高さ */
+}
+
 .about-visual {
   background-color: #8d6449;
-  opacity : 0.5;
+  opacity : 0.4;
+}
+
+.about-text {
+  color: #000000;
 }
 
 .item_post {
@@ -100,6 +118,48 @@ h1 {
 
 .item-label {
   font-size : 14px;
+}
+
+// 商品詳細画面のスタイル指定
+.comment-box {
+  overflow-x    : hidden;
+  overflow-y    : scroll;
+  padding       : 25px;
+  height        : 500px;
+  margin        : auto;                 // サンプル用 中央寄せ
+  box-sizing    : border-box;           // 罫線も含む長さ
+  width         : 95%;                 // BOXの幅
+
+  background    : #ffffff;              // BOXの背景色
+  border        : 5px solid #89c997;   // 枠線の指定
+  border-radius : 13px;                 // 角丸の指定
+}
+
+.item-box {
+  width          : 100%;             // 100%幅
+  max-width      : 500px;                // BOXの最大幅
+  height         : 400px;                 // サンプルBOXの幅
+  border-collapse: collapse;         // 境界線結合
+  border-spacing : 0;                // 罫線間余白
+  font-size      : 12pt;              // 文字サイズ
+}
+// ヘッダーのスタイル指定
+.item-box th {
+  text-align    : left;              // 文字位置
+  font-weight   : bold;              // 太文字
+  font-size     : 17px;
+  padding       : 6px 0px;           // 余白
+}
+
+// 明細のスタイル指定
+.item-box td {
+  text-align    : left;              // 文字位置
+  padding       : 6px 0px;           // 余白
+  font-size     : 17px;
+}
+
+.like-link {
+   color: #89c997;
 }
 
 

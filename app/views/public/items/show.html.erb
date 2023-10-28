@@ -1,95 +1,140 @@
 <div class="container">
+  <div>
+    <%= flash[:notice] %>
+  </div><br>
+  <h1><%= @item.goods_name %></h1>
 
-  <div class="row col-12 mx-auto py-5">
-    <div class="sidebar col-3">
-      <!--カテゴリ-->
-      <%= render 'public/categories/category', categories: @categories %>
-    </div>
+  <div class="row">
+    <div class="col-lg-5">
+      <table class="item-box">
 
-    <!--商品詳細-->
-    <div class="col-8 justify-content-center ml-5">
-      <div>
-        <%= flash[:notice] %>
-      </div><br>
-      <h4><%= @item.goods_name %></h4>
-      <div class>
-        <%= image_tag @item.get_image, size:"200x200", class: "card-img-top", style: "object-fit: cover;" %>
-      </div>
-
-      <table>
+        <!--商品詳細-->
         <tr>
-          <td><%= @item.area %></td>
+          <td>
+            <%= image_tag @item.image, size: "240x160" %>
+          </td>
           <td></td>
-          <td><%= @item.store %></td>
         </tr>
 
         <tr>
+          <th>投稿者</th>
+          <td><%= @customer.name %></td>
+        </tr>
+
+        <tr>
+          <th>カテゴリ</th>
           <td><%= @item.category.name %></td>
+        </tr>
+
+        <tr>
+          <th>値段</th>
           <td><%= @item.price.to_s.reverse.scan(/.{1,3}/).join(',').reverse %>円</td>
         </tr>
 
         <tr>
-          <td>投稿者：<%= @customer.name %></td>
-        </tr>
-
-        <tr>
+          <th>商品説明</th>
           <td><%= @item.description %></td>
         </tr>
 
-        <% if @item.customer == current_customer %>
-  <tr>
-    <td>
-      <%= link_to 'Edit',  edit_item_path, class: "btn btn-success" %>
-    </td>
-    <td>
-      <%= link_to 'Destroy', item_path, class: "btn btn-danger", method: :delete %>
-    </td>
-  </tr>
-<% end %>
+        <tr>
+          <th>エリア</th>
+          <td><%= @item.area %></td>
+        </tr>
 
-<!--いいね機能-->
-<% if @item.like_listed_by?(current_customer) %>
-    <tr>
-      <td>
-      <%= link_to item_like_lists_path(@item), method: :delete do %>
-        ♥<%= @item.like_lists.count %> いいね
-      <% end %>
-    <% else %>
-      <%= link_to item_like_lists_path(@item), method: :post do %>
-        ♡<%= @item.like_lists.count %> いいね
-      <% end %>
-      </td>
-    </tr>
-<% end %>
+        <tr>
+          <th>店舗名</th>
+          <td><%= @item.store %></td>
+        </tr>
 
-<!--コメント機能-->
-    <tr>
-      <td>コメント件数：<%= @item.comment_lists.count %></td>
-    </tr>
+        <tr>
+          <th>タグ</th>
+          <td>
+            <% @item_tags.each do |tag| %>
+              <div class="tag_list">
+                <i class="fa-sharp fa-solid fa-tag" style="color: #b8f0ad;"></i>
+                <%= tag.name %>
+              </div>
+            <% end %>
+          </td>
+        </tr>
 
-    <tr>
-      <% @item.comment_lists.each do |comment_list| %>
-        <td><%= comment_list.customer.name %></td>
-        <td><%= comment_list.created_at.strftime('%Y/%m/%d') %><%= comment_list.comment %></td>
-        <td>
-          <% if comment_list.customer == current_customer %>
-            <%= link_to 'Destroy', item_comment_list_path(comment_list.item, comment_list), method: :delete %>
+        <tr>
+          <th>コメント件数</th>
+          <td>：<%= @item.comment_lists.count %>件</td>
+        </tr>
+
+        <tr>
+          <% if @item.customer == current_customer %>
+            <th>
+              <%= link_to edit_item_path do %>
+                <i class="fa-solid fa-screwdriver-wrench" style="color: #89c997"></i>
+              <% end %>
+              <%= link_to item_path, method: :delete, data: { confirm: '本当に削除しますか？' } do %>
+                <i class="fa-solid fa-trash-can" style="color: #89c997"></i>
+              <% end %>
+            </th>
+            <!--いいね機能-->
+              <% if @item.like_listed_by?(current_customer) %>
+                <td>
+                  <%= link_to item_like_lists_path(@item), class: "like-link", method: :delete do %>
+                    ♥<%= @item.like_lists.count %> いいね
+                  <% end %>
+                </td>
+              <% else %>
+                <td>
+                  <%= link_to item_like_lists_path(@item), class: "like-link", method: :post do %>
+                    ♡<%= @item.like_lists.count %> いいね
+                  <% end %>
+                </td>
+              <% end %>
           <% end %>
-        </td>
-      <% end %>
-      <%= form_with model: [@item, @comment_list] do |f| %>
-        <td><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %></td>
-        <td><%= f.submit "送信する" %></td>
-      <% end %>
-    </tr>
-</table>
+        </tr>
 
-<!-- タグリスト -->
-      <% @item_tags.each do |tag| %>
-      <i class="fa-sharp fa-solid fa-tag"></i>
-        <%= link_to tag.name,search_tag_path(tag_id: tag.id) %>
-      <% end %>
+      </table>
+    </div>
 
+    <div class="col-lg-7">
+      <div class= "comment-box">
+        <table>
+
+          <!--コメントを表示-->
+          <% @item.comment_lists.each do |comment_list| %>
+            <tr>
+              <td><%= comment_list.comment %></td>
+            <tr>
+            <tr>
+              <td>
+                <%= comment_list.customer.name %>
+                <%= comment_list.created_at.strftime('%Y/%m/%d') %>
+                <% if comment_list.customer == current_customer %>
+                  <%= link_to item_comment_list_path(comment_list.item, comment_list), method: :delete, data: { confirm: '本当に削除しますか？' } do %>
+                    <i class="fa-solid fa-trash-can" style="color: #89c997"></i>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+
+        </table>
+      </div>
+
+      <!--コメント投稿機能　-->
+      <div class="pl-3">
+        <%= form_with model: [@item, @comment_list] do |f| %>
+        <table>
+
+          <tr>
+            <td>
+              <%= f.text_area :comment, placeholder: "コメントを入力", class: 'form-control' %>
+            </td>
+
+            <td>
+              <%= f.submit "送信する", class: "btn btn-outline-success" %>
+            </td>
+        <% end %>
+
+        </table>
+      </div>
     </div>
   </div>
 </div>
