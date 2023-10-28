@@ -73,6 +73,7 @@
                 <i class="fa-solid fa-trash-can" style="color: #89c997"></i>
               <% end %>
             </th>
+          <% end %>
             <!--いいね機能-->
               <% if @item.like_listed_by?(current_customer) %>
                 <td>
@@ -87,7 +88,6 @@
                   <% end %>
                 </td>
               <% end %>
-          <% end %>
         </tr>
 
       </table>
