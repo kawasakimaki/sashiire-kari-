@@ -14,6 +14,48 @@ header {
   background: #89c997;
 }
 
+// Top画面のスタイル指定
+.over-top {
+  position   : absolute;                   /* 親要素からの絶対位置 */
+  box-sizing : border-box;
+  white-space: nowrap;                     /* 折返しなし */
+  display    : inline-block;               /* 文字囲みのBOXにする */
+  color      : rgba(0, 0, 0, 0.80);    /* 文字色（透明度） */
+  top        : 40%;                        /* 親要素からの上位置 */
+  left       : 65%;                        /* 親要素からの左位置 */
+  transform  : translate(-65%, -24%);      /* 文字BOXの位置ずらし */
+  font-size  : 30pt;                       /* 文字サイズ */
+  font-weight: bold;                       /* 太字 */
+  line-height: 1em;                        /* 1行の高さ */
+}
+
+.over-top-message {
+  font-size: 5pt;
+}
+
+h1 {
+  color :#828282;
+}
+
+.top-name {
+  font-size: 60px;
+}
+
+.title-name {
+  font-family: 'Major Mono Display', monospace;
+  color: #828282;
+}
+
+.green {
+  color: #89c997;
+}
+
+// アバウトページのスタイル指定
+.about-visual {
+  background-color: #8d6449;
+  opacity : 0.5;
+}
+
 .item_post {
   width          : 100%;             // 100%幅
   border-collapse: collapse;         // 境界線結合

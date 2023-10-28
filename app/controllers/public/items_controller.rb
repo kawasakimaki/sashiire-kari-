@@ -1,5 +1,5 @@
 class Public::ItemsController < ApplicationController
-  before_action :authenticate_customer!, except: [:top, :guest_sign_in]
+  before_action :authenticate_customer!, except: [:top, :guest_sign_in, :about]
   before_action :is_matching_login_customer, only: [:edit, :update]
 
   def new

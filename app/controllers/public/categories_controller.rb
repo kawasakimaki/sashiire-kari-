@@ -1,5 +1,5 @@
 class Public::CategoriesController < ApplicationController
-  before_action :authenticate_customer!, except: [:top, :guest_sign_in]
+  before_action :authenticate_customer!, except: [:top, :guest_sign_in, :about]
 
   def show
     @categories = Category.page(params[:page]).per(9)

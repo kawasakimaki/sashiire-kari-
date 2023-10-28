@@ -10,7 +10,13 @@
       <!--customerログイン時-->
       <% if customer_signed_in? %>
         <!--メニュー-->
+
         <ul class="mr-auto d-flex">
+
+          <li class="nav-link">
+            <%= link_to 'About', about_path,  class: "btn btn-outline-success" %>
+          </li>
+
           <li class="nav-link">
             <%= link_to "My page", customers_mypage_path(@customer), class: "btn btn-outline-success" %>
           </li>
@@ -41,6 +47,10 @@
         <ul class="mr-auto d-flex">
 
           <li class="nav-link">
+            <%= link_to 'About', about_path,  class: "btn btn-outline-success" %>
+          </li>
+
+          <li class="nav-link">
             <%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-success" %>
           </li>
 
@@ -68,6 +78,10 @@
       <% else %>
         <!--メニュー-->
         <ul class="mr-auto d-flex">
+
+          <li class="nav-link">
+            <%= link_to 'About', about_path,  class: "btn btn-outline-success" %>
+          </li>
 
           <li class="nav-link">
             <%= link_to "Items", items_path, class: "btn btn-outline-success" %>

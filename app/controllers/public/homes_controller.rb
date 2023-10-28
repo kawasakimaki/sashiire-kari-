@@ -1,9 +1,7 @@
 class Public::HomesController < ApplicationController
-  before_action :authenticate_customer!, except: [:top, :guest_sign_in]
+  before_action :authenticate_customer!, except: [:top, :guest_sign_in, :about]
 
   def top
-    @categories = Category.all
-    @tag_lists = Tag.all
   end
 
   def guest_sign_in
