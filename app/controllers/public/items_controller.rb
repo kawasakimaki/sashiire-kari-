@@ -74,7 +74,7 @@ class Public::ItemsController < ApplicationController
 
   # キーワード検索
   def search
-    @items = Item.looks(params[:goods_name])
+    @items = Item.looks("partial_match", params[:goods_name])
     @categories = Category.all
     @tag_lists = Tag.all
   end

@@ -1,4 +1,6 @@
+<% if customer_signed_in? %>
   <%= form_with url: searche_path, method: :get, local: true do |f| %>
     <%= f.text_field :goods_name, placeholder: "商品名を入力" %>
     <%= f.submit "search", class:"btn btn-outline-success" %>
-   <% end %>
+  <% end %>
+<% end %>

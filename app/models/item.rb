@@ -44,9 +44,9 @@ class Item < ApplicationRecord
   end
 
   # キーワード検索機能
-  def self.looks(goods_name)
-      if goods_name != ""
-      @items = Item.where(goods_name: goods_name)
+  def self.looks(search, word)
+      if search == "partial_match"
+      @items = Item.where("goods_name LIKE?","%#{word}%")
       else
       @items = Item.all
       end
