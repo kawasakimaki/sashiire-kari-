@@ -15,10 +15,10 @@
            <div class="item card-list-container col m-0.5 pb-5 text-center" >
              <%= link_to item_path(like_item.id) do %>
                <%= image_tag like_item.get_image, size:"150x100", class: "card-img-top", style: "object-fit: cover;" %>
-               <br><br><h6 class="card-title text-dark"><%= like_item.goods_name %></h6>
+               <br><br><h6 class="card-title text-dark"><%= truncate(like_item.goods_name, length: 8) %></h6>
              <% end %>
               <div class="item-label">
-                <%= like_item.customer.name %>
+                <%= truncate(like_item.customer.name, length: 9) %>
               </div>
               <i class="fa-solid fa-comment" style="color: #b8f0ad;"></i><%= like_item.comment_lists.count %>
               <i class="fa-solid fa-heart" style="color: #b8f0ad;"></i><%= like_item.like_lists.count %>
