@@ -74,20 +74,9 @@
               <% end %>
             </th>
           <% end %>
-            <!--いいね機能-->
-              <% if @item.like_listed_by?(current_customer) %>
-                <td>
-                  <%= link_to item_like_lists_path(@item), class: "like-link", method: :delete do %>
-                    ♥<%= @item.like_lists.count %> いいね
-                  <% end %>
-                </td>
-              <% else %>
-                <td>
-                  <%= link_to item_like_lists_path(@item), class: "like-link", method: :post do %>
-                    ♡<%= @item.like_lists.count %> いいね
-                  <% end %>
-                </td>
-              <% end %>
+            <td class="like-btn-<%= @item.id %>">
+              <%= render 'public/like_lists/like', item: @item %>
+            </td>
         </tr>
 
       </table>
@@ -102,7 +91,7 @@
             <tr>
               <td><%= comment_list.comment %></td>
             <tr>
-              
+
             <tr>
               <td>
                 <%= comment_list.customer.name %>
@@ -114,7 +103,7 @@
                 <% end %>
               </td>
             </tr>
-            
+
           <% end %>
 
         </table>

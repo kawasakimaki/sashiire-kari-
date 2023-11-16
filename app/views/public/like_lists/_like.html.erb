@@ -1,0 +1,10 @@
+<!--いいね機能-->
+<% if item.like_listed_by?(current_customer) %>
+  <%= link_to item_like_lists_path(item), class: "like-link", method: :delete, remote: true do %>
+    ♥<%= item.like_lists.count %> いいね
+  <% end %>
+<% else %>
+  <%= link_to item_like_lists_path(item), class: "like-link", method: :post, remote: true do %>
+    ♡<%= item.like_lists.count %> いいね
+  <% end %>
+<% end %>
