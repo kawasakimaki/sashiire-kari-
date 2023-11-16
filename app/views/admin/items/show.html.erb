@@ -6,72 +6,88 @@
     </div>
   </div>
 
-  <div class="row my-3">
-    <div class="col-lg-4">
-      <div class="card-img-top m-1">
-        <%= image_tag @item.get_image, size:"300x200", class: "card-img-top", style: "object-fit: cover;" %>
-      </div>
-    </div>
-
+  <div class="row">
     <div class="col-lg-5">
-      <table class="table table-borderless">
+      <table class="item-box">
 
         <tr>
-          <td>商品名</td>
+          <td><%= image_tag @item.get_image, size:"240x160"%></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <th>商品名</th>
           <td><%= @item.goods_name %></td>
         </tr>
 
         <tr>
-          <td>商品説明</td>
+          <th>商品説明</th>
           <td><%= @item.description %></td>
         </tr>
 
         <tr>
-          <td>カテゴリー</td>
+          <th>カテゴリー</th>
           <td><%= @item.category.name %></td>
         </tr>
 
         <tr>
-          <td>値段</td>
+          <th>値段</th>
           <td><%= @item.price.to_s(:delimited) %>円</td>
         </tr>
 
         <tr>
-          <td>エリア</td>
+          <th>エリア</th>
           <td><%= @item.area %></td>
         </tr>
 
         <tr>
-          <td>店舗名</td>
+          <th>店舗名</th>
           <td><%= @item.store %></td>
         </tr>
 
         <tr>
-          <td>投稿者</td>
+          <th>投稿者</th>
           <td><%= @customer.name %></td>
         </tr>
 
-        <!--コメント機能-->
-        <tr>
-          <td>コメント件数：<%= @item.comment_lists.count %></td>
+         <tr>
+           <th>コメント件数</th>
+          <td>：<%= @item.comment_lists.count %></td>
         </tr>
-
-        <% @item.comment_lists.each do |comment_list| %>
-          <tr>
-            <td><%= comment_list.customer.name %></td>
-            <td><%= comment_list.created_at.strftime('%Y/%m/%d') %><%= comment_list.comment %></td>
-            <td>
-              <%= link_to 'Destroy', admin_item_comment_list_path(comment_list.item, comment_list), method: :delete %>
-            </td>
-          </tr>
-        <% end %>
 
         <tr>
           <td>
             <%= link_to 'Destroy', admin_item_path, class: "btn btn-outline-success", method: :delete %>
           </td>
         </tr>
+
       </table>
+    </div>
+
+    <div class="col-lg-7">
+      <div class= "comment-box">
+        <table>
+
+          <!--コメントを表示-->
+          <% @item.comment_lists.each do |comment_list| %>
+
+            <tr>
+              <td><%= comment_list.comment %></td>
+            </tr>
+
+            <tr>
+              <td>
+                <%= comment_list.customer.name %>
+                <%= comment_list.created_at.strftime('%Y/%m/%d') %>
+                <%= link_to admin_item_comment_list_path(comment_list.item, comment_list), method: :delete do %>
+                  <i class="fa-solid fa-trash-can" style="color: #89c997"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+
+        </table>
+      </div>
     </div>
   </div>
 </div>
