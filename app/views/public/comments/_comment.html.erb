@@ -1,0 +1,22 @@
+<!--コメントを表示-->
+<table>
+  <% item.comment_lists.each do |comment_list| %>
+
+    <tr>
+      <td><%= comment_list.comment %></td>
+    <tr>
+
+    <tr>
+      <td>
+        <%= comment_list.customer.name %>
+        <%= comment_list.created_at.strftime('%Y/%m/%d') %>
+        <% if comment_list.customer == current_customer %>
+          <%= link_to item_comment_list_path(comment_list.item, comment_list), method: :delete, remote: true, data: { confirm: '本当に削除しますか？' } do %>
+            <i class="fa-solid fa-trash-can" style="color: #89c997"></i>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+
+  <% end %>
+</table>

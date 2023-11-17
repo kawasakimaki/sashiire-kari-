@@ -60,7 +60,7 @@
 
         <tr>
           <th>コメント件数</th>
-          <td>：<%= @item.comment_lists.count %>件</td>
+          <td class="comment_<%= @item.id %>">：<%= @item.comment_lists.count %>件</td>
         </tr>
 
         <tr>
@@ -74,6 +74,7 @@
               <% end %>
             </th>
           <% end %>
+            <!--いいね機能-->
             <td class="like-btn-<%= @item.id %>">
               <%= render 'public/like_lists/like', item: @item %>
             </td>
@@ -83,35 +84,14 @@
     </div>
 
     <div class="col-lg-7">
-      <div class= "comment-box">
-        <table>
-
-          <!--コメントを表示-->
-          <% @item.comment_lists.each do |comment_list| %>
-            <tr>
-              <td><%= comment_list.comment %></td>
-            <tr>
-
-            <tr>
-              <td>
-                <%= comment_list.customer.name %>
-                <%= comment_list.created_at.strftime('%Y/%m/%d') %>
-                <% if comment_list.customer == current_customer %>
-                  <%= link_to item_comment_list_path(comment_list.item, comment_list), method: :delete, data: { confirm: '本当に削除しますか？' } do %>
-                    <i class="fa-solid fa-trash-can" style="color: #89c997"></i>
-                  <% end %>
-                <% end %>
-              </td>
-            </tr>
-
-          <% end %>
-
-        </table>
+      <div class= "comment-box comments">
+        <!--コメントを表示-->
+        <%= render 'public/comments/comment', item: @item %>
       </div>
 
       <!--コメント投稿機能　-->
       <div class="pl-3">
-        <%= form_with model: [@item, @comment_list] do |f| %>
+        <%= form_with(model: [@item, @comment_list], local: false) do |f| %>
         <table>
 
           <tr>

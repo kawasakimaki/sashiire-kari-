@@ -1,0 +1,4 @@
+$(".item_<%= @item.id %>").html(":<%= @item.comments.count %>件");
+$(".comments").html("<%= j(render 'public/comments/comment', item: @item) %>");
+<!--コメント後に入力欄を空白にする-->
+$(".comment_list_comment").val("");

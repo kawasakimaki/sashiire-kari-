@@ -14,7 +14,7 @@
         <ul class="mr-auto d-flex">
 
           <li class="nav-link">
-            <%= link_to 'About', about_path,  class: "btn btn-outline-success" %>
+            <%= link_to 'About', about_path, class: "btn btn-outline-success" %>
           </li>
 
           <li class="nav-link">
@@ -22,15 +22,21 @@
           </li>
 
           <li class="nav-link">
-            <%= link_to "Items", items_path,  class: "btn btn-outline-success" %>
+            <%= link_to "Items", items_path, class: "btn btn-outline-success" %>
           </li>
 
           <li class="nav-link">
-            <%= link_to "New Post", new_item_path,  class: "btn btn-outline-success" %>
+            <%= link_to "New Post", new_item_path, class: "btn btn-outline-success" %>
           </li>
 
           <li class="nav-link">
-            <%= link_to "Log out", destroy_customer_session_path,  class: "btn btn-outline-success", method: :delete %>
+            <%= link_to customers_likes_path, class: "btn btn-outline-success" do %>
+              <i class="fa-solid fa-heart"></i>
+            <% end %>
+          </li>
+
+          <li class="nav-link">
+            <%= link_to "Log out", destroy_customer_session_path, class: "btn btn-outline-success", method: :delete %>
           </li>
         </ul>
 
@@ -47,7 +53,7 @@
         <ul class="mr-auto d-flex">
 
           <li class="nav-link">
-            <%= link_to 'About', about_path,  class: "btn btn-outline-success" %>
+            <%= link_to 'About', about_path, class: "btn btn-outline-success" %>
           </li>
 
           <li class="nav-link">
@@ -80,7 +86,7 @@
         <ul class="mr-auto d-flex">
 
           <li class="nav-link">
-            <%= link_to 'About', about_path,  class: "btn btn-outline-success" %>
+            <%= link_to 'About', about_path, class: "btn btn-outline-success" %>
           </li>
 
           <li class="nav-link">
@@ -96,7 +102,7 @@
           </li>
 
           <li class="nav-link">
-            <%= link_to 'Gest sign in', homes_guest_sign_in_path,  class: "btn btn-outline-success", method: :post %>
+            <%= link_to 'Gest sign in', homes_guest_sign_in_path, class: "btn btn-outline-success", method: :post %>
           </li>
         </ul>
 
