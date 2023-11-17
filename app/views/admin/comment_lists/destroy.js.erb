@@ -1,0 +1,2 @@
+$(".item_<%= @item.id %>").html(":<%= @item.comment_lists.count %>件");
+$(".comments").html("<%= j(render 'admin/comment_lists/comment', item: @item) %>");

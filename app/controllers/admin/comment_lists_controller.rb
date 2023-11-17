@@ -1,8 +1,9 @@
 class Admin::CommentListsController < ApplicationController
 
   def destroy
-    CommentList.find(params[:id]).destroy
-    redirect_to admin_item_path(params[:item_id])
+    @comment = CommentList.find(params[:id])
+    @item = @comment.item
+    @comment.destroy
   end
 
   private
