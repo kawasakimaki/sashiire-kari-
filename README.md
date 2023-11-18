@@ -24,7 +24,15 @@
 ・結婚の挨拶等の手土産の用意をする時
 ​
 ## 設計書
-後程設計予定
+ER図
+https://app.diagrams.net/#G1bDSojG5vWnOL9FDofaZG8O1lrcS6XVLO
+テーブル定義書
+https://docs.google.com/spreadsheets/d/11xnWDMQyMWmN1ljGyQD1Pnnb42XZJf9t/edit#gid=1229052192
+画面遷移図
+https://app.diagrams.net/#G1cF3TPLzogsXN_lvKPpVLty855UYE3qDc
+アプリケーション詳細設計
+https://docs.google.com/spreadsheets/d/1EOJ0jW_DP6OLHUlfYt5nB5ZcBWAT9KSRRetem01O33o/edit#gid=549108681
+
 ​
 ## 開発環境
 - OS：Linux(CentOS)
