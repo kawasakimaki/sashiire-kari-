@@ -22,7 +22,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.page(params[:page]).per(9)
+    @items = Item.page(params[:page]).per(8)
     @item_amount = Item.all
     @categories = Category.all
     @tag_lists = Tag.all
