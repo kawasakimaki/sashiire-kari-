@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # 管理者用
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :categories
+    resources :categories, only:[:index, :create, :edit, :update]
     resources :items, only: [:index, :show, :destroy] do
       resources :comment_lists, only: [:destroy]
     end
@@ -27,19 +27,19 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
     get "home/about" => "homes#about", as: "about"
-    get "customers/mypage" => "customers#show"
-    get "customers/mypage/edit" => "customers#edit"
-    patch "customers/update" => "customers#update"
-    get "customers/confirm" => "customers#confirm"
-    patch "customers/withdrawal" => "customers#withdrawal"
-    get "/customers/post" => "customers#post"
+    get "customers/mypage" => "customers#show" #顧客のマイページ
+    get "customers/mypage/edit" => "customers#edit" #顧客の登録情報編集画面
+    patch "customers/update" => "customers#update" #顧客の登録情報更新
+    get "customers/confirm" => "customers#confirm" #顧客の退会確認画面
+    patch "customers/withdrawal" => "customers#withdrawal" #顧客の退会処理(ステータスの更新)
+    get "/customers/post" => "customers#post" #投稿一覧画面（自分の投稿のみ）
     get "/customers/likes" => "customers#likes" #いいね一覧
     get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe' # 退会画面を表示
     patch '/customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal' # 退会処理(customerカラムのbooleanを更新)
     get "search_tag" => "items#search_tag" # タグの検索で使用する
     get 'searche' => 'items#search' #キーワード検索を表示
 
-    resources :categories, only: [:show]
+    resources :categories, only: [:show] #カテゴリごとの商品
     resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy, ] do
       resource :like_lists, only: [:create, :destroy]
       resources :comment_lists, only: [:create, :destroy]
