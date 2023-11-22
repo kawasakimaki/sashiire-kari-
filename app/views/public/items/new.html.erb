@@ -52,7 +52,7 @@
           </table>
 
           <label>タグ(,で区切ると複数タグ登録できます)</label>
-          <%= f.text_field :name,value: @tag_list, class: 'form-control' %><br>
+          <%= f.text_field :name,value: @tag_list, class: 'form-control', :placeholder=>"同じタグ名は複数登録出来ません" %><br>
           <%= f.submit '投稿', class: "btn btn-outline-success" %>
 
         <% end %>
