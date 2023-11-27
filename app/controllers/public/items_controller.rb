@@ -22,7 +22,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.page(params[:page]).per(8)
+    @items = Item.page(params[:page]).per(8).order(created_at: :desc)
     @item_amount = Item.all
     @categories = Category.all
     @tag_lists = Tag.all
@@ -67,14 +67,14 @@ class Public::ItemsController < ApplicationController
     #検索されたタグを受け取る
     @tag = Tag.find(params[:tag_id])
     #検索されたタグに紐づく投稿を表示
-    @items = @tag.items
+    @items = @tag.items.order(created_at: :desc)
     @categories = Category.all
     @tag_lists = Tag.all
   end
 
   # キーワード検索
   def search
-    @items = Item.looks("partial_match", params[:goods_name])
+    @items = Item.looks("partial_match", params[:goods_name]).order(created_at: :desc)
     @categories = Category.all
     @tag_lists = Tag.all
   end
