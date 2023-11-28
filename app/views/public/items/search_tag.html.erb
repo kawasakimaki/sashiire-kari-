@@ -13,7 +13,7 @@
         <% @items.each do |item| %>
           <div class="item card-list-container col m-0.5 pb-5 text-center" >
             <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_image, size:"150x100", class: "card-img-top", style: "object-fit: cover;" %>
+              <%= image_tag item.get_image, size:"150x100", style: "object-fit: cover;" %>
               <br><br><h6 class="card-title text-dark"><%= truncate(item.goods_name, length: 8) %></h6>
             <% end %>
             <div><%= item.created_at.strftime('%Y/%m/%d') %></div>

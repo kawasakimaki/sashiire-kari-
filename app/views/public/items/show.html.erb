@@ -10,8 +10,8 @@
 
         <!--商品詳細-->
         <tr>
-          <td>
-            <%= image_tag @item.image, size: "240x160" %>
+          <td class="item-img">
+            <%= image_tag @item.image, size: "240x160", style: "object-fit: cover;" %>
           </td>
           <td></td>
         </tr>
