@@ -16,7 +16,6 @@ class Public::ItemsController < ApplicationController
       @item.save_tags(tag_list)
       redirect_to item_path(@item), notice:'投稿が完了しました'
     else
-      flash[:notice] = "投稿に失敗しました。"
       render :new
     end
   end
