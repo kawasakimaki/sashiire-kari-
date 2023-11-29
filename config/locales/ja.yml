@@ -9,10 +9,11 @@ ja:
     attributes:
       item:
         goods_name: '商品名'
-        description: '商品説明文'
+        description: '商品説明'
         price: '価格'
         area: 'エリア'
         store: '店舗名'
+        image: '商品画像'
   date:
     abbr_day_names:
     - 日
