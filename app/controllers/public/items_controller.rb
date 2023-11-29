@@ -13,7 +13,7 @@ class Public::ItemsController < ApplicationController
     # 受け取った値を,で区切って配列にする↓
     tag_list = params[:item][:name].split(',')
     if @item.save
-      @item.save_tags(tag_list)
+      @item.save_tags(tag_list.uniq)
       redirect_to item_path(@item), notice:'投稿が完了しました'
     else
       render :new
@@ -46,7 +46,7 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     tag_list=params[:item][:name].split(',')
     if @item.update(item_params)
-      @item.save_tags(tag_list)
+      @item.save_tags(tag_list.uniq)
       redirect_to item_path(@item.id), notice:'投稿の編集が完了しました'
     else
       flash[:notice] = "投稿の編集に失敗しました。"
