@@ -10,6 +10,7 @@ main {
   padding-bottom: 56px;
 }
 
+// ヘッダーのカラー指定
 header {
   background: #89c997;
 }
@@ -53,6 +54,7 @@ h1 {
 .link-color {
   color: #89c997;
 }
+// Top画面のスタイル指定ここまで
 
 // アバウトページのスタイル指定
 .over-about {
@@ -77,20 +79,22 @@ h1 {
 .about-text {
   color: #000000;
 }
+// アバウトページのスタイル指定ここまで
 
+// 商品新規投稿のスタイル指定
 .item_post {
   width          : 100%;             // 100%幅
   border-collapse: collapse;         // 境界線結合
   border-spacing : 50;                // 罫線間余白
   font-size      : 9pt;              // 文字サイズ
 }
-// ヘッダーのスタイル指定
+// 商品新規投稿のスタイル指定/ヘッダーのスタイル指定
 .item_post th {
   text-align    : left;              // 文字位置
   padding       : 16px 0 16px 16px;  // 余白
   font-size     : 16px;
 }
-// 明細のスタイル指定
+// 商品新規投稿のスタイル指定/明細のスタイル指定
 .item_post td {
   text-align    : left;              // 文字位置
   padding       : 10px 16px;        // 余白
@@ -114,17 +118,19 @@ h1 {
   border-bottom: solid 15px transparent;
   border-right: solid 20px rgb(149, 158, 155);
 }
+// カテゴリーロゴのスタイル指定ここまで
 
 // タグリストのスタイル指定
 .tag_list {
   font-size : 12px;
 }
 
+// 商品を投稿したユーザーの名前表示のサイズ指定
 .item-label {
   font-size : 14px;
 }
 
-// 商品詳細画面のスタイル指定
+// コメント表示のスタイル指定
 .comment-box {
   overflow-x    : hidden;
   overflow-y    : scroll;
@@ -139,6 +145,7 @@ h1 {
   border-radius : 13px;                 // 角丸の指定
 }
 
+// 商品詳細画面の左側の表示
 .item-box {
   width          : 100%;             // 100%幅
   max-width      : 500px;                // BOXの最大幅
@@ -147,7 +154,7 @@ h1 {
   border-spacing : 0;                // 罫線間余白
   font-size      : 12pt;              // 文字サイズ
 }
-// ヘッダーのスタイル指定
+// 商品詳細画面の左側の表示/ヘッダーのスタイル指定
 .item-box th {
   text-align    : left;              // 文字位置
   font-weight   : bold;              // 太文字
@@ -155,13 +162,14 @@ h1 {
   padding       : 6px 0px;           // 余白
 }
 
-// 明細のスタイル指定
+// 商品詳細画面の左側の表示/明細のスタイル指定
 .item-box td {
   text-align    : left;              // 文字位置
   padding       : 6px 0px;           // 余白
   font-size     : 17px;
 }
 
+// いいね機能の部分テンプレート
 .like-link {
    color: #89c997;
 }
